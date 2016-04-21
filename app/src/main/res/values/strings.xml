@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">PigsFood</string>
+    <string name="hello">Добро пожаловать!</string>
+    <string name="write">Запись</string>
+    <string name="show">Просмотр</string>
+    <string name="edit">Редактировать</string>
+    <string name="listName">Список бункеров</string>
+    <string name="lblDone">Продолжить</string>
+    <string name="lblCancel">Отмена</string>
+    <string name="lblSeven">СК-7</string>
+    <string name="lblEight">СК-8</string>
+    <string name="type_error">Выберите все линии</string>
+    <string name="btnUp">+</string>
+    <string name="btnDn">-</string>
+    <string name="lblCenter">Центр</string>
+    <string name="lblWall">Стенка</string>
+    <string name="default_value">290\nсм</string>
+    <string name="lblLine">Линия №</string>
+    <string name="save">Сохранить</string>
+</resources>
