@@ -22,6 +22,7 @@ public class Calc implements Parcelable{
     private double density[] = new double[15]; //плотность
     private int mass[] = new int[15]; //масса
     private int calcType;
+    private int defaultDens = 576;
 
     //конструктор
     public Calc() {
@@ -44,6 +45,10 @@ public class Calc implements Parcelable{
 
     public int getCalcType() {
         return calcType;
+    }
+
+    public int getValueOld(int i) {
+        return valueOld[i];
     }
 
     //запрос номера линии
@@ -106,7 +111,8 @@ public class Calc implements Parcelable{
             }
         } else {
             for (int i=0; i<=14; i++) {
-                if (valueOld[i]>=520) {
+                volume[i] = calcVolumeOld(valueOld[i]);
+                /*if (valueOld[i]>=520) {
                     volume[i] = 0;
                 } else if (valueOld[i]<520 && valueOld[i]>=240) {
                     h = (523 - valueOld[i])*0.01;
@@ -120,7 +126,7 @@ public class Calc implements Parcelable{
                     h = (523 - valueOld[i] - 283 - 163)*0.01;
                     r = h * Math.tan(Math.PI/3);
                     volume[i] = 20.664 + (Math.PI/3) * r * r * h;
-                }
+                }*/
             }
         }
 
@@ -150,8 +156,8 @@ public class Calc implements Parcelable{
 
         if (Double.isNaN(dens7)||Double.isNaN(dens8)) {
             if (Double.isNaN(dens7)&&Double.isNaN(dens8)) {
-                dens7 = 576;
-                dens8 = 576;
+                dens7 = defaultDens;
+                dens8 = defaultDens;
             }else if (Double.isNaN(dens7)) {
                 dens7 = dens8;
             } else {
@@ -184,6 +190,32 @@ public class Calc implements Parcelable{
     //запрос значения массы
     public int getMass (int i) {
         return mass[i];
+    }
+
+    public int calcCurrMass (int value) {
+        int mass;
+        mass = (int)(calcVolumeOld(value)*defaultDens);
+        return mass;
+    }
+
+    public double calcVolumeOld (int valueOld) {
+        double volume, h, r;
+        if (valueOld>=520) {
+            volume = 0;
+        } else if (valueOld<520 && valueOld>=240) {
+            h = (523 - valueOld)*0.01;
+            r = h * Math.tan(Math.PI/6);
+            volume = (Math.PI/3) *r * r * h;
+        } else if (valueOld<240 && valueOld>=77){
+            r = 1.6;
+            h = (523 - valueOld - 283)*0.01;
+            volume = 7.587 + Math.PI * r * r * h;
+        } else {
+            h = (523 - valueOld - 283 - 163)*0.01;
+            r = h * Math.tan(Math.PI/3);
+            volume = 20.664 + (Math.PI/3) * r * r * h;
+        }
+        return volume;
     }
 
 

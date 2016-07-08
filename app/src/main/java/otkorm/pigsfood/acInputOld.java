@@ -38,7 +38,11 @@ public class acInputOld extends AppCompatActivity implements View.OnClickListene
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     EditText edMass = (EditText) form.findViewById(R.id.edMass);
-                    myCalc.setMass(i - 1, Integer.parseInt(edMass.getText().toString()));
+                    if (edMass.getText().toString().equals("")) {
+                        myCalc.setMass(i - 1, 0);
+                    } else {
+                        myCalc.setMass(i - 1, Integer.parseInt(edMass.getText().toString()));
+                    }
                 }
             });
             AlertDialog ad = bld.create();
@@ -73,11 +77,24 @@ public class acInputOld extends AppCompatActivity implements View.OnClickListene
                 myCalc.setValue(i-1, val);
                 if (i<=14) {
                     i++;
-                    Intent stIn = new Intent(this,acInputOld.class);
-                    stIn.putExtra("Calc", myCalc);
-                    stIn.putExtra("i", i);
-                    startActivity(stIn);
-                    finish();
+
+                    AlertDialog.Builder bld = new AlertDialog.Builder(acInputOld.this);
+                    bld.setTitle("Примерная масса корма")
+                            .setMessage(Integer.toString(myCalc.calcCurrMass(myCalc.getValueOld(i-2))))
+                            .setCancelable(false)
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent stIn = new Intent(acInputOld.this, acInputOld.class);
+                                    stIn.putExtra("Calc", myCalc);
+                                    stIn.putExtra("i", i);
+                                    startActivity(stIn);
+                                    finish();
+                                }
+                            });
+                    AlertDialog ad = bld.create();
+                    ad.show();
+
                 } else {
                     myCalc.calculate(myCalc.old);
                     Intent stSh = new Intent(this,acShow.class);
