@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PigsFood</string>
+    <string name="welcome">Выберите действие</string>
+    <string name="new_session">Начать новую сессию</string>
+    <string name="single_dim">Сделать единичное измерение</string>
+    <string name="prev_data">Предыдущие измерения</string>
+    <string name="help">Помощь</string>
+</resources>
