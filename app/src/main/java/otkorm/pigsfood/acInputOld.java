@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class acInputOld extends AppCompatActivity implements View.OnClickListener{
 
@@ -39,7 +40,8 @@ public class acInputOld extends AppCompatActivity implements View.OnClickListene
                 public void onClick(DialogInterface dialog, int which) {
                     EditText edMass = (EditText) form.findViewById(R.id.edMass);
                     if (edMass.getText().toString().equals("")) {
-                        myCalc.setMass(i - 1, 0);
+                        //myCalc.setMass(i - 1, 0);
+                        Toast.makeText(acInputOld.this, "Введите значение", Toast.LENGTH_LONG).show();
                     } else {
                         myCalc.setMass(i - 1, Integer.parseInt(edMass.getText().toString()));
                     }
@@ -78,9 +80,13 @@ public class acInputOld extends AppCompatActivity implements View.OnClickListene
                 if (i<=14) {
                     i++;
 
+                    form = this.getLayoutInflater().inflate(R.layout.dl_curr, null);
+                    TextView tvMass = (TextView) form.findViewById(R.id.tvMass);
+                    tvMass.setText(Integer.toString(myCalc.calcCurrMass(myCalc.getValueOld(i - 2))));
                     AlertDialog.Builder bld = new AlertDialog.Builder(acInputOld.this);
                     bld.setTitle("Примерная масса корма")
-                            .setMessage(Integer.toString(myCalc.calcCurrMass(myCalc.getValueOld(i-2))))
+                            .setView(form)
+                            //.setMessage(Integer.toString(myCalc.calcCurrMass(myCalc.getValueOld(i - 2))))
                             .setCancelable(false)
                             .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                                 @Override
