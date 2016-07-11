@@ -40,8 +40,9 @@ public class acInputOld extends AppCompatActivity implements View.OnClickListene
                 public void onClick(DialogInterface dialog, int which) {
                     EditText edMass = (EditText) form.findViewById(R.id.edMass);
                     if (edMass.getText().toString().equals("")) {
-                        //myCalc.setMass(i - 1, 0);
-                        Toast.makeText(acInputOld.this, "Введите значение", Toast.LENGTH_LONG).show();
+                        myCalc.setMass(i - 1, 0);
+                        //Toast.makeText(acInputOld.this, "Введите значение", Toast.LENGTH_LONG).show();
+
                     } else {
                         myCalc.setMass(i - 1, Integer.parseInt(edMass.getText().toString()));
                     }
