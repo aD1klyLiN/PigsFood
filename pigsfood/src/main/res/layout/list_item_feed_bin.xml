@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_gravity="center_vertical|left">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_name"
+            android:id="@+id/tvName"
+            android:textSize="@dimen/app_text_size_medium"
+            android:layout_margin="30dp"
+            android:layout_gravity="center_vertical|left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvLineNumber"
+            android:text="@string/app_tv_line_number"
+            android:textSize="@dimen/app_text_size_large"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="40dp"
+            android:paddingRight="40dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_plus"
+                android:id="@+id/tvPlus"
+                android:textSize="@dimen/app_text_size_large"
+                android:layout_marginBottom="10dp"
+                android:visibility="visible" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_minus"
+                android:id="@+id/tvMinus"
+                android:textSize="@dimen/app_text_size_large"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tvValue"
+            android:text="@string/app_tv_default_value"
+            android:textSize="@dimen/app_text_size_large"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="20dp"
+        android:layout_gravity="center_horizontal">
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/rb_seven"
+            android:id="@+id/rbSeven"
+            android:textSize="@dimen/app_text_size_medium"
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp" />
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/app_rb_eight"
+            android:id="@+id/rbEight"
+            android:textSize="@dimen/app_text_size_medium"
+            android:layout_weight="1" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_btn_edit"
+            android:id="@+id/tvEdit"
+            android:textSize="@dimen/app_text_size_small"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:padding="20dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_btn_save"
+            android:id="@+id/tvSave"
+            android:textSize="@dimen/app_text_size_small"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:padding="20dp" />
+    </LinearLayout>
+</LinearLayout>

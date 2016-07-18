@@ -5,4 +5,13 @@
     <string name="single_dim">Сделать единичное измерение</string>
     <string name="prev_data">Предыдущие измерения</string>
     <string name="help">Помощь</string>
+    <string name="tv_name">Линия №</string>
+    <string name="tv_plus">+</string>
+    <string name="tv_minus">-</string>
+    <string name="rb_seven">СК-7</string>
+    <string name="app_rb_eight">СК-8</string>
+    <string name="app_btn_edit">Изменить</string>
+    <string name="app_btn_save">Записать</string>
+    <string name="app_tv_default_value">290\\nсм</string>
+    <string name="app_tv_line_number">1</string>
 </resources>
