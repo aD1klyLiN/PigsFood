@@ -18,7 +18,8 @@
         <activity android:name=".acFoodType" />
         <activity android:name=".acValueInput" />
         <activity android:name=".acShow" />
-        <activity android:name=".acInputOld"></activity>
+        <activity android:name=".acInputOld" />
+        <activity android:name=".acEdit"></activity>
     </application>
 
 </manifest>

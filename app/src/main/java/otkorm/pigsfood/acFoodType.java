@@ -55,9 +55,9 @@ public class acFoodType extends AppCompatActivity implements View.OnClickListene
                         startActivity(stIn);
                         finish();
                     } else {
-                        Intent stIn = new Intent(this,acInputOld.class);
+                        Intent stIn = new Intent(this,acEdit.class);
                         stIn.putExtra("Calc", myCalc);
-                        stIn.putExtra("i", i);
+                        //stIn.putExtra("i", i);
                         startActivity(stIn);
                         finish();
                     }

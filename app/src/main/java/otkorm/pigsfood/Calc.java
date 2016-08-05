@@ -3,6 +3,8 @@ package otkorm.pigsfood;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 /*---------Операции с кормами-----------
 1. Ввод измерений
 2. Расчёт массы
@@ -216,6 +218,27 @@ public class Calc implements Parcelable{
             volume = 20.664 + (Math.PI/3) * r * r * h;
         }
         return volume;
+    }
+
+
+    public ArrayList<Bin> getBins() {
+        ArrayList<Bin> bins = new ArrayList<Bin>();
+        for (int i=0;i<=14;i++) {
+            Bin bin = new Bin(number[i], foodType[i], defaultDens);
+            bins.add(bin);
+        }
+        return bins;
+    }
+
+    public void setBins(ArrayList<Bin> bins) {
+        int i = 0;
+        for (Bin bin:bins) {
+            valueOld[i] = bin.getValueOld();
+            if (bin.getNumber()==7 || bin.getNumber()==11) {
+                mass[i] = bin.getMass();
+            }
+            i++;
+        }
     }
 
 
