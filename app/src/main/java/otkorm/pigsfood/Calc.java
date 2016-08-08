@@ -12,8 +12,8 @@ import java.util.ArrayList;
  */
 public class Calc implements Parcelable{
 
-    public final int old = 0;
-    public final int std = 1;
+    public final int OLD = 0; //флаг расчёта по уровню центра
+    public final int STD = 1; //флаг расчёта по уровням центра и боковой стенки
 
     private int number[] = new int[15]; //номер линии
     private int valueCenter[] = new int[15]; //измерение по центру
@@ -23,8 +23,8 @@ public class Calc implements Parcelable{
     private double volume[] = new double[15]; //объём
     private double density[] = new double[15]; //плотность
     private int mass[] = new int[15]; //масса
-    private int calcType;
-    private int defaultDens = 576;
+    private int calcType; //тип расчёта
+    private int defaultDens = 576; //предварительная плотность
 
     //конструктор
     public Calc() {
@@ -38,12 +38,12 @@ public class Calc implements Parcelable{
             density[i] = 0;
             mass[i] = 0;
         }
-        calcType = old;
+        calcType = OLD;
     }
 
-    public void setCalcType(int t) {
+    /*public void setCalcType(int t) {
         calcType = t;
-    }
+    }*/
 
     public int getCalcType() {
         return calcType;
@@ -59,21 +59,22 @@ public class Calc implements Parcelable{
     }
 
     //запрос типа корма
-    public char getFoodType(int i) {
+    /*public char getFoodType(int i) {
         return foodType[i];
-    }
+    }*/
 
     //установка типа корма
     public void setFoodType(char[] foodType) {
         this.foodType = foodType;
     }
 
-    //заполнение измерений
+    //заполнение измерений для STD
     public void setValue(int i, int vCent, int vWall) {
         valueCenter[i] = vCent;
         valueWall[i] = vWall;
     }
 
+    //заполнение измерений для OLD
     public void setValue(int i, int vOld) {
         valueOld[i] = vOld;
     }
@@ -90,7 +91,7 @@ public class Calc implements Parcelable{
         double h, l, r, dens7 = 0, dens8 = 0;
 
         //расчёт объёма
-        if (type==std) {
+        if (type== STD) {
 
             for (int i = 0; i <= 14; i++) {
 
@@ -144,7 +145,6 @@ public class Calc implements Parcelable{
             } else if (foodType[10]=='8') {
                 dens7 = density[6];
                 dens8 = density[10];
-                double x = dens7 + dens8;
             }
         } else if (foodType[6]=='8') {
             if (foodType[10]=='7') {
@@ -164,7 +164,6 @@ public class Calc implements Parcelable{
                 dens7 = dens8;
             } else {
                 dens8 = dens7;
-                double x = dens7 + dens8;
             }
         }
 
@@ -194,12 +193,20 @@ public class Calc implements Parcelable{
         return mass[i];
     }
 
+    /**
+     * @param value - значение уровня по центру
+     * @return - предварительная масса
+     */
     public int calcCurrMass (int value) {
         int mass;
         mass = (int)(calcVolumeOld(value)*defaultDens);
         return mass;
     }
 
+    /**
+     * @param valueOld - значение уровня по центру
+     * @return - рассчётный объём
+     */
     public double calcVolumeOld (int valueOld) {
         double volume, h, r;
         if (valueOld>=520) {
@@ -221,8 +228,11 @@ public class Calc implements Parcelable{
     }
 
 
+    /** создаёт список из массива данных
+     * @return - список бункеров Bin
+     */
     public ArrayList<Bin> getBins() {
-        ArrayList<Bin> bins = new ArrayList<Bin>();
+        ArrayList<Bin> bins = new ArrayList<>();
         for (int i=0;i<=14;i++) {
             Bin bin = new Bin(number[i], foodType[i], defaultDens);
             bins.add(bin);
@@ -230,6 +240,9 @@ public class Calc implements Parcelable{
         return bins;
     }
 
+    /** записывает данные из списка в массив
+     * @param bins - список бункеров Bin
+     */
     public void setBins(ArrayList<Bin> bins) {
         int i = 0;
         for (Bin bin:bins) {

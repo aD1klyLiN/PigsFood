@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class acInputOld extends AppCompatActivity implements View.OnClickListener{
 
@@ -103,7 +102,7 @@ public class acInputOld extends AppCompatActivity implements View.OnClickListene
                     ad.show();
 
                 } else {
-                    myCalc.calculate(myCalc.old);
+                    myCalc.calculate(myCalc.OLD);
                     Intent stSh = new Intent(this,acShow.class);
                     stSh.putExtra("Calc", myCalc);
                     startActivity(stSh);

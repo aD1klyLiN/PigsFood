@@ -48,7 +48,7 @@ public class acFoodType extends AppCompatActivity implements View.OnClickListene
                 if (tAdp.isChecked()) {
                     myCalc.setFoodType(tAdp.getFoodType());
                     int i = 1;
-                    if (myCalc.getCalcType()==myCalc.std) {
+                    if (myCalc.getCalcType()==myCalc.STD) {
                         Intent stIn = new Intent(this,acValueInput.class);
                         stIn.putExtra("Calc", myCalc);
                         stIn.putExtra("i", i);

@@ -77,7 +77,7 @@ public class acValueInput extends AppCompatActivity implements View.OnClickListe
                     startActivity(stIn);
                     finish();
                 } else {
-                    myCalc.calculate(myCalc.std);
+                    myCalc.calculate(myCalc.STD);
                     Intent stSh = new Intent(this,acShow.class);
                     stSh.putExtra("Calc", myCalc);
                     startActivity(stSh);
